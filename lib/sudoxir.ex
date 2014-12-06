@@ -1,5 +1,4 @@
 import Enum
-import Sudoxir.Board
 
 # The entry point to the app
 defmodule Sudoxir do

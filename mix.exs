@@ -5,6 +5,7 @@ defmodule Sudoxir.Mixfile do
     [app: :sudoxir,
      version: "0.0.1",
      elixir: "~> 1.0",
+     escript: [main_module: Sudoxir],
      deps: deps]
   end
 
