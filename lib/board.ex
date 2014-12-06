@@ -30,27 +30,27 @@ defmodule Sudoxir.Board do
     # not already used in the row ...
     # and not already used in the column ...
     # and not already used in the 3x3 block, are valid candidates
-    (1..9) |>
-      reject(&(find_used_numbers_in_row(board, index) |> member?(&1))) |>
-      reject(&(find_used_numbers_in_column(board, index) |> member?(&1))) |>
-      reject(&(find_used_numbers_in_block(board, index) |> member?(&1)))
+    (1..9)
+      |> reject(&(find_used_numbers_in_row(board, index) |> member?(&1)))
+      |> reject(&(find_used_numbers_in_column(board, index) |> member?(&1)))
+      |> reject(&(find_used_numbers_in_block(board, index) |> member?(&1)))
   end
 
   # Find all numbers that have already been used in this row
   def find_used_numbers_in_row(board, index) do
     start_of_row = index - rem(index, 9)
-    board |>
-      slice(start_of_row, 9) |>
-      filter(&(&1 != 0))
+    board
+      |> slice(start_of_row, 9)
+      |> filter(&(&1 != 0))
   end
 
   # Find all numbers that have already been used in this column
   def find_used_numbers_in_column(board, index) do
     start_of_column = rem(index, 9)
-    board |> 
-      Enum.drop(start_of_column) |> 
-      take_every(9) |>
-      filter(&(&1 != 0))
+    board
+      |> Enum.drop(start_of_column)
+      |> take_every(9)
+      |> filter(&(&1 != 0))
   end
 
   # Find all numbers that have already been used in this 3x3 block

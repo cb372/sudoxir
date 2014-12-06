@@ -6,8 +6,8 @@ defmodule Sudoxir do
   def main(board_file) do
     # Parse the board file
     {:ok, lines} = File.read board_file
-    board = String.split(lines) |> 
-      map(&(Integer.parse(&1) |> elem(0)))
+    board = String.split(lines)
+      |> map(&(Integer.parse(&1) |> elem(0)))
 
     # Start the coordinator
     coord_task = Task.async(Sudoxir.Coordinator, :start, [])
